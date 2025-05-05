@@ -1,11 +1,12 @@
 import { headers as getHeaders } from 'next/headers.js'
-import Image from 'next/image'
 import { getPayload } from 'payload'
 import React from 'react'
-import { fileURLToPath } from 'url'
 
 import config from '@/payload.config'
-import './styles.css'
+import './global.css'
+import Link from 'next/link'
+import { Button, buttonVariants } from '@/components/ui/button'
+import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 
 export default async function HomePage() {
   const headers = await getHeaders()
@@ -13,47 +14,30 @@ export default async function HomePage() {
   const payload = await getPayload({ config: payloadConfig })
   const { user } = await payload.auth({ headers })
 
-  const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
-
   return (
-    <div className="home">
-      <div className="content">
-        <picture>
-          <source srcSet="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg" />
-          <Image
-            alt="Payload Logo"
-            height={65}
-            src="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg"
-            width={65}
-          />
-        </picture>
-        {!user && <h1>Welcome to your new proect.</h1>}
-        {user && <h1>Welcome back, {user.email}</h1>}
-        <div className="links">
-          <a
-            className="admin"
-            href={payloadConfig.routes.admin}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Go to admin panel
-          </a>
-          <a
-            className="docs"
-            href="https://payloadcms.com/docs"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Documentation
-          </a>
+    <>
+      <MaxWidthWrapper>
+        <div className="mx-auto -mb-5 flex max-w-3xl flex-col items-center py-20 text-center">
+          {!user && <h1>Welcome to your new proect.</h1>}
+          {user && <h1>Welcome back, {user.email}</h1>}
+          <h1 className="text-2xl font-light tracking-tight text-gray-900 sm:text-6xl">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit{' '}
+            <span className="text-red-600">sed do eiusmod</span>.
+          </h1>
+          <p className="mt-6 max-w-prose text-lg text-muted-foreground">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+          </p>
+          <div className="mt-6 flex flex-col gap-4 sm:flex-row">
+            <Link href="/consultants" className={buttonVariants()}>
+              Check Out Our Talent
+            </Link>
+            <Link href="/admin">
+              <Button variant="ghost">Admin &rarr;</Button>
+            </Link>
+          </div>
         </div>
-      </div>
-      <div className="footer">
-        <p>Update this page by editing</p>
-        <a className="codeLink" href={fileURL}>
-          <code>app/(frontend)/page.tsx</code>
-        </a>
-      </div>
-    </div>
+      </MaxWidthWrapper>
+    </>
   )
 }
