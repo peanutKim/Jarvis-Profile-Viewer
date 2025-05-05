@@ -18,7 +18,7 @@ export default async function HomePage() {
     <>
       <MaxWidthWrapper>
         <div className="mx-auto -mb-5 flex max-w-3xl flex-col items-center py-20 text-center">
-          {!user && <h1>Welcome to your new proect.</h1>}
+          {!user && <h1>Welcome to your new project.</h1>}
           {user && <h1>Welcome back, {user.email}</h1>}
           <h1 className="text-2xl font-light tracking-tight text-gray-900 sm:text-6xl">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit{' '}
