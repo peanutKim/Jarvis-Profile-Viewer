@@ -8,9 +8,11 @@ import { useEffect, useState } from 'react'
 import { Consultant } from '@/payload-types'
 import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
+import { Input } from '@/components/ui/input'
 
 const Page = () => {
   const [consultants, setConsultants] = useState<Consultant[]>([])
+  const [filter, setFilter] = useState("")
   const searchParams = useSearchParams()
 
   useEffect(() => {
@@ -51,9 +53,22 @@ const Page = () => {
     fetchConsultants()
   }, [])
 
+  function submitSearch() {
+    if(filter != "") {
+      window.location.replace(window.location.origin + "/consultants?firstName=" + filter)
+    } else {
+      window.location.replace(window.location.origin + "/consultants")
+    }
+  }
+
   return (
     <MaxWidthWrapper>
+      <div className="pt-3">
       <h1>Consultants</h1>
+      <div className="flex w-full max-w-sm items-center space-x-2 pt-3 pb-3">
+      <Input type="text" id="filter" value={filter} placeholder="Search by first name" onInput={e => {setFilter(e.target.value)}}/>
+      <Button type="submit" onClick={submitSearch}>Search</Button>
+    </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {consultants.map((consultant) => (
           <Card key={consultant.id} className="shadow-md">
@@ -91,6 +106,7 @@ const Page = () => {
             </CardFooter>
           </Card>
         ))}
+      </div>
       </div>
     </MaxWidthWrapper>
   )
