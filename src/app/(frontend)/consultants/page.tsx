@@ -7,14 +7,44 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { Consultant } from '@/payload-types'
 import Image from 'next/image'
+import { useSearchParams } from 'next/navigation'
 
 const Page = () => {
   const [consultants, setConsultants] = useState<Consultant[]>([])
+  const searchParams = useSearchParams()
 
   useEffect(() => {
     const fetchConsultants = async () => {
       const response = await fetch('/api/consultants')
       const data = await response.json()
+
+      if(searchParams.toString() == "") {
+        return setConsultants(data.docs)
+      }
+
+      if(searchParams.get("email") != null) {
+        data.docs = data.docs.filter((item: { email: (string | null)[] }) => item.email.includes(searchParams.get("email")));
+      }
+
+      if(searchParams.get("firstName") != null) {
+        let firstName = String(searchParams.get("firstName")).toUpperCase();
+        data.docs = data.docs.filter((item: { firstName: string }) => item.firstName.toUpperCase().includes(firstName));
+      }
+
+      if(searchParams.get("lastName") != null) {
+        let lastName = String(searchParams.get("lastName")).toUpperCase();
+        data.docs = data.docs.filter((item: { lastName: string }) => item.lastName.toUpperCase().includes(lastName));
+      }
+
+      if(searchParams.get("phoneNumber") != null) {
+        data.docs = data.docs.filter((item: { phoneNumber: (string | null)[] }) => item.phoneNumber.includes(searchParams.get("phoneNumber")));
+      }
+
+      if(searchParams.get("bio") != null) {
+        let bio = String(searchParams.get("bio")).toUpperCase();
+        data.docs = data.docs.filter((item: { bio: string }) => item.bio.toUpperCase().includes(bio));
+      }
+
       setConsultants(data.docs)
     }
 
