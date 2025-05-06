@@ -1,16 +1,51 @@
 import { Card, CardContent } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
+import Image from 'next/image'
 
-export default function Profile() {
+interface Consultant {
+  firstName: string
+  lastName: string
+  email: string
+  phoneNumber: string
+  bio: string
+  profilePicture?: { url: string }
+}
+
+interface ProfileProps {
+  consultant: Consultant
+}
+
+export default function Profile({ consultant }: ProfileProps) {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 space-y-8">
-      <section>
-        <h1 className="text-3xl font-bold mb-2">John Doe . Jarvis Consulting</h1>
-        <p className="text-muted-foreground">
-          I'm a passionate frontend developer with experience in building responsive and accessible
-          web applications using modern frameworks like React and Next.js.
-        </p>
-      </section>
+
+      <Card className="flex flex-col sm:flex-row items-center sm:items-start gap-6 p-6">
+        {consultant.profilePicture && (
+          <Image
+            src={
+              consultant.profilePicture &&
+              (typeof consultant.profilePicture === 'string'
+                ? consultant.profilePicture
+                : consultant.profilePicture.url || '/default-image.jpg')
+              }
+            alt={`${consultant.firstName} ${consultant.lastName}`}
+            width={500} // Default width
+            height={500} // Default height
+            className="w-24 h-24 rounded-full object-cover"
+          />
+        )}
+        <div>
+          <h2 className="text-xl font-semibold">
+            {consultant.firstName} {consultant.lastName} . Jarvis Consulting
+          </h2>
+          <p className="text-muted-foreground">{consultant.bio}</p>
+          <div className="mt-2 text-sm text-muted-foreground space-y-1">
+            <p><strong>Email:</strong> {consultant.email}</p>
+            <p><strong>Phone:</strong> {consultant.phoneNumber}</p>
+          </div>
+        </div>
+      </Card>
+
       <Separator />
 
       <section>
