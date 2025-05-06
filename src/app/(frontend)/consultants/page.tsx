@@ -13,7 +13,7 @@ const Page = () => {
 
   useEffect(() => {
     const fetchConsultants = async () => {
-      const response = await fetch('/api/consultants')
+      const response = await fetch('/api/get-consultants')
       const data = await response.json()
       setConsultants(data.docs)
     }
