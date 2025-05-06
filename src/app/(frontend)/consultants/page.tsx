@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { Consultant } from '@/payload-types'
-import Image from 'next/image'
 
 const Page = () => {
   const [consultants, setConsultants] = useState<Consultant[]>([])
@@ -40,7 +39,7 @@ const Page = () => {
                 <strong>Phone:</strong> {consultant.phoneNumber}
               </p>
               {consultant.profilePicture && (
-                <Image
+                <img
                   src={
                     consultant.profilePicture &&
                     (typeof consultant.profilePicture === 'string'
