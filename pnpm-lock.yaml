@@ -26,6 +26,9 @@ importers:
       '@radix-ui/react-select':
         specifier: ^2.2.3
         version: 2.2.3(@types/react-dom@19.1.2(@types/react@19.1.0))(@types/react@19.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@radix-ui/react-separator':
+        specifier: ^1.1.5
+        version: 1.1.5(@types/react-dom@19.1.2(@types/react@19.1.0))(@types/react@19.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@radix-ui/react-slot':
         specifier: ^1.2.1
         version: 1.2.1(@types/react@19.1.0)(react@19.1.0)
@@ -1157,6 +1160,19 @@ packages:
 
   '@radix-ui/react-select@2.2.3':
     resolution: {integrity: sha512-mqk4qtEQTiTOHZodzIujLz4wwWayBva7Cx+D0KkoH3uJ5ifZKjw5AQhDBQbvzqbLWxfF0/mLj5dZpsO4itcwcA==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
+  '@radix-ui/react-separator@1.1.5':
+    resolution: {integrity: sha512-wdsy1P9VLR3L7mrznIHsMX4DEpn5tgqRDY4fjzIlz/Dw1QsumepxFtEPeK6ML5VwCcSMC8xw3won9W5Y9XDmcA==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -5734,6 +5750,15 @@ snapshots:
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
       react-remove-scroll: 2.6.3(@types/react@19.1.0)(react@19.1.0)
+    optionalDependencies:
+      '@types/react': 19.1.0
+      '@types/react-dom': 19.1.2(@types/react@19.1.0)
+
+  '@radix-ui/react-separator@1.1.5(@types/react-dom@19.1.2(@types/react@19.1.0))(@types/react@19.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+    dependencies:
+      '@radix-ui/react-primitive': 2.1.1(@types/react-dom@19.1.2(@types/react@19.1.0))(@types/react@19.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
     optionalDependencies:
       '@types/react': 19.1.0
       '@types/react-dom': 19.1.2(@types/react@19.1.0)
