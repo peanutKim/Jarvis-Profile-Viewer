@@ -42,8 +42,8 @@ const Page = () => {
                   src={
                     consultant.profilePicture &&
                     (typeof consultant.profilePicture === 'string'
-                      ? consultant.profilePicture
-                      : consultant.profilePicture.url || '/default-image.jpg')
+                      ? `${process.env.NEXT_PUBLIC_BASE_URL || ''}${consultant.profilePicture}`
+                      : `${process.env.NEXT_PUBLIC_BASE_URL || ''}${consultant.profilePicture.url}` || '/default-image.jpg')
                   }
                   alt={`${consultant.firstName} ${consultant.lastName}`}
                   width={500} // Default width
