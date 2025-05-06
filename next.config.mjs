@@ -13,7 +13,6 @@ const nextConfig = {
         hostname: 'jarvis-profile-viewer.vercel.app',
       },
     ],
-    unoptimized: true,
   },
 }
 
