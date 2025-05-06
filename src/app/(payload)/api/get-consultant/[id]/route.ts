@@ -1,9 +1,9 @@
 import { getPayload } from 'payload'
 import configPromise from '@/payload.config'
 
-export const GET = async (req: Request, { params }: { params: { id: string } }) => {
+export const GET = async (req: Request, { params }: { params: Promise<{ id: string }> }) => {
   try {
-    const { id } = params
+    const { id } = await params
     const payload = await getPayload({
       config: configPromise,
     })
