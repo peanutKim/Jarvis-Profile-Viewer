@@ -54,7 +54,7 @@ const Page = () => {
               )}
             </CardContent>
             <CardFooter className="flex justify-end">
-              <Link href={`/profile?id=${consultant.id}`} passHref>
+              <Link href={`/profile/${consultant.id}`} passHref>
                 <Button variant="outline">View Profile</Button>
               </Link>
             </CardFooter>
