@@ -90,7 +90,7 @@ const ConsultantsPageContent = () => {
           return (
             <Card
               key={consultant.id}
-              className="overflow-hidden border rounded-2xl shadow-md hover:shadow-lg transition-shadow"
+              className="overflow-hidden border rounded-2xl shadow-md hover:shadow-lg transition-shadow min-w-[300px]"
             >
               <CardContent className="flex flex-col items-center text-center p-6 space-y-4">
                 <Image
