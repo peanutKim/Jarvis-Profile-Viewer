@@ -72,6 +72,7 @@ const ConsultantsPageContent = () => {
             id="filter"
             value={filter}
             placeholder="Search by name"
+            aria-label="Search consultants by name"
             onInput={(e) => {
               setFilter((e.target as HTMLInputElement).value);
             }}
@@ -79,7 +80,7 @@ const ConsultantsPageContent = () => {
         </div>
       </div>
   
-      <div className="mb-5 mt-2 flex flex-wrap justify-center gap-6">
+      <div className="mb-5 mt-2 flex flex-wrap justify-center gap-6" aria-label="Consultants list">
         {consultants.map((consultant) => {
           const fullName = `${consultant.firstName} ${consultant.lastName}`;
           const imageUrl =
@@ -91,11 +92,12 @@ const ConsultantsPageContent = () => {
             <Card
               key={consultant.id}
               className="overflow-hidden border rounded-2xl shadow-md hover:shadow-lg transition-shadow min-w-[300px]"
+              aria-label={`Consultant card for ${fullName}`}
             >
               <CardContent className="flex flex-col items-center text-center p-6 space-y-4">
                 <Image
                   src={imageUrl}
-                  alt={fullName}
+                  alt={`Profile picture of ${fullName}`}
                   width={96}
                   height={96}
                   className="w-24 h-24 rounded-full object-cover ring-2 ring-gray-200"
@@ -109,7 +111,9 @@ const ConsultantsPageContent = () => {
               </CardContent>
               <CardFooter className="flex justify-center pb-6">
                 <Link href={`/profile/${consultant.id}`} passHref>
-                  <Button className="w-full max-w-[200px]">View Profile</Button>
+                  <Button className="w-full max-w-[200px]" aria-label={`View profile of ${fullName}`}>
+                    View Profile
+                  </Button>
                 </Link>
               </CardFooter>
             </Card>
@@ -124,7 +128,7 @@ const ConsultantsPageContent = () => {
 const Page = () => {
   return (
     <MaxWidthWrapper>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div aria-label="Loading consultants list">Loading...</div>}>
         <ConsultantsPageContent />
       </Suspense>
     </MaxWidthWrapper>

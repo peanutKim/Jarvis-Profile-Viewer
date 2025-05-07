@@ -18,12 +18,25 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn('relative h-full font-sans antialiased', robo.className)}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <main className="relative flex min-h-screen flex-col">
-            {<Navbar />}
-            <div className="flex-1 flex-grow">{children}</div>
-            {<Footer />}
+      <body
+        className={cn('relative h-full font-sans antialiased', robo.className)}
+        aria-label="Root layout of the application"
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          aria-label="Theme provider for light and dark mode"
+        >
+          <main
+            className="relative flex min-h-screen flex-col"
+            aria-label="Main content area"
+          >
+            <Navbar aria-label="Application navigation bar" />
+            <div className="flex-1 flex-grow" aria-label="Page content">
+              {children}
+            </div>
+            <Footer aria-label="Application footer" />
           </main>
         </ThemeProvider>
       </body>

@@ -23,7 +23,6 @@ export default function ProfilePage() {
   useEffect(() => {
     const fetchConsultant = async () => {
       try {
-
         const response = await fetch(`/api/get-consultant/${id}`)
 
         if (!response.ok) {
@@ -31,9 +30,7 @@ export default function ProfilePage() {
         }
 
         const data = await response.json()
-
         setConsultant(data)
-
       } catch (e) {
         console.log(e)
       } finally {
@@ -44,10 +41,10 @@ export default function ProfilePage() {
     fetchConsultant()
   }, [id])
 
-  if(loading){
+  if (loading) {
     return (
       <MaxWidthWrapper>
-        <div className=''>Loading profile...</div>
+        <div aria-label="Loading profile">Loading profile...</div>
       </MaxWidthWrapper>
     )
   }
@@ -55,14 +52,17 @@ export default function ProfilePage() {
   if (!consultant) {
     return (
       <MaxWidthWrapper>
-        <div>404 | Consultant not found.</div>
+        <div aria-label="Consultant not found">404 | Consultant not found.</div>
       </MaxWidthWrapper>
     )
   }
 
   return (
     <MaxWidthWrapper>
-      <Profile consultant={consultant}/>
+      <Profile
+        consultant={consultant}
+        aria-label={`Profile of ${consultant.firstName} ${consultant.lastName}`}
+      />
     </MaxWidthWrapper>
   )
 }
