@@ -5,6 +5,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import { Consultant } from '@/payload-types'
 
 const Page = () => {
@@ -22,7 +23,7 @@ const Page = () => {
 
   return (
     <MaxWidthWrapper>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="mt-5 mb-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {consultants.map((consultant) => (
           <Card key={consultant.id} className="shadow-md">
             <CardHeader>
@@ -37,20 +38,17 @@ const Page = () => {
               <p>
                 <strong>Phone:</strong> {consultant.phoneNumber}
               </p>
-              {consultant.profilePicture && (
-                <img
-                  src={
-                    consultant.profilePicture &&
-                    (typeof consultant.profilePicture === 'string'
-                      ? `${process.env.NEXT_PUBLIC_BASE_URL || ''}${consultant.profilePicture}`
-                      : `${process.env.NEXT_PUBLIC_BASE_URL || ''}${consultant.profilePicture.url}` || '/default-image.jpg')
-                  }
-                  alt={`${consultant.firstName} ${consultant.lastName}`}
-                  width={500} // Default width
-                  height={500} // Default height
-                  className="w-full h-auto mt-2 object-cover"
-                />
-              )}
+              <Image
+                src={
+                  typeof consultant.profilePicture === 'string'
+                    ? consultant.profilePicture
+                    : consultant.profilePicture?.url || '/default-image.jpg'
+                }
+                alt={`${consultant.firstName} ${consultant.lastName}`}
+                width={500}
+                height={500}
+                className="w-full h-auto mt-2 object-cover"
+              />
             </CardContent>
             <CardFooter className="flex justify-end">
               <Link href={`/profile/${consultant.id}`} passHref>
