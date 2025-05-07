@@ -80,36 +80,47 @@ const ConsultantsPageContent = () => {
           </Button>
         </div>
       </div>
-      <div className="mb-5 mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {consultants.map((consultant) => (
-          <Card key={consultant.id} className="shadow-md">
-            <CardContent className="flex flex-col items-center text-center">
-              <h1 className="text-4xl font-light">
-                {consultant.firstName} {consultant.lastName}
-              </h1>
-              <p className="text-muted-foreground">{consultant.email}</p>
-              <Image
-                src={
-                  typeof consultant.profilePicture === 'string'
-                    ? consultant.profilePicture
-                    : consultant.profilePicture?.url || '/default-image.jpg'
-                }
-                alt={`${consultant.firstName} ${consultant.lastName}`}
-                width={500}
-                height={500}
-                className="w-full h-auto mt-2 object-cover"
-              />
-            </CardContent>
-            <CardFooter className="flex justify-center">
-              <Link href={`/profile/${consultant.id}`} passHref>
-                <Button>View Profile</Button>
-              </Link>
-            </CardFooter>
-          </Card>
-        ))}
+  
+      <div className="mb-5 mt-2 flex flex-wrap justify-center gap-6">
+        {consultants.map((consultant) => {
+          const fullName = `${consultant.firstName} ${consultant.lastName}`;
+          const imageUrl =
+            typeof consultant.profilePicture === "string"
+              ? consultant.profilePicture
+              : consultant.profilePicture?.url || "/default-image.jpg";
+  
+          return (
+            <Card
+              key={consultant.id}
+              className="overflow-hidden border rounded-2xl shadow-md hover:shadow-lg transition-shadow"
+            >
+              <CardContent className="flex flex-col items-center text-center p-6 space-y-4">
+                <Image
+                  src={imageUrl}
+                  alt={fullName}
+                  width={96}
+                  height={96}
+                  className="w-24 h-24 rounded-full object-cover ring-2 ring-gray-200"
+                />
+                <div>
+                  <h2 className="text-xl font-semibold text-foreground">
+                    {fullName}
+                  </h2>
+                  <p className="text-sm text-muted-foreground">{consultant.email}</p>
+                </div>
+              </CardContent>
+              <CardFooter className="flex justify-center pb-6">
+                <Link href={`/profile/${consultant.id}`} passHref>
+                  <Button className="w-full max-w-[200px]">View Profile</Button>
+                </Link>
+              </CardFooter>
+            </Card>
+          );
+        })}
       </div>
     </div>
   );
+  
 };
 
 const Page = () => {
