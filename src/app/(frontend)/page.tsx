@@ -10,7 +10,7 @@ export default async function HomePage() {
     <>
       <MaxWidthWrapper>
         <div className="mx-auto -mb-5 flex max-w-3xl flex-col items-center py-20 text-center">
-          <h1 className="text-4xl font-light tracking-tight text-gray-900 sm:text-6xl">
+          <h1 className="text-4xl font-light tracking-tight sm:text-6xl">
             Grow your team with conversion to permanent employees at {' '}
             <span className="text-red-600">no cost</span>.
           </h1>
