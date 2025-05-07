@@ -17,7 +17,7 @@ interface ProfileProps {
 
 export default function Profile({ consultant }: ProfileProps) {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 space-y-8">
+    <div className="max-w-4xl mx-auto px-4 py-8 space-y-8 text-center sm:text-left">
 
       <Card className="flex flex-col sm:flex-row items-center sm:items-start gap-6 p-6">
         {consultant.profilePicture && (
@@ -27,14 +27,14 @@ export default function Profile({ consultant }: ProfileProps) {
               (typeof consultant.profilePicture === 'string'
                 ? consultant.profilePicture
                 : consultant.profilePicture.url || '/default-image.jpg')
-              }
+            }
             alt={`${consultant.firstName} ${consultant.lastName}`}
             width={500} // Default width
             height={500} // Default height
             className="w-24 h-24 rounded-full object-cover"
           />
         )}
-        <div>
+        <div className="text-center sm:text-left">
           <h2 className="text-xl font-semibold">
             {consultant.firstName} {consultant.lastName} . Jarvis Consulting
           </h2>
@@ -50,8 +50,8 @@ export default function Profile({ consultant }: ProfileProps) {
 
       <section>
         <h2 className="text-2xl font-semibold mb-4">Skills</h2>
-        <div className="grid sm:grid-cols-3 gap-6">
-          <div>
+        <div className="flex flex-nowrap gap-6 overflow-x-auto">
+          <div className="flex-shrink-0 min-w-[175px] sm:flex-grow">
             <h3 className="font-medium">Proficient</h3>
             <ul className="list-disc list-inside text-muted-foreground">
               <li>JavaScript</li>
@@ -60,7 +60,7 @@ export default function Profile({ consultant }: ProfileProps) {
               <li>HTML/CSS</li>
             </ul>
           </div>
-          <div>
+          <div className="flex-shrink-0 min-w-[175px] sm:flex-grow">
             <h3 className="font-medium">Competent</h3>
             <ul className="list-disc list-inside text-muted-foreground">
               <li>TypeScript</li>
@@ -69,7 +69,7 @@ export default function Profile({ consultant }: ProfileProps) {
               <li>Node.js</li>
             </ul>
           </div>
-          <div>
+          <div className="flex-shrink-0 min-w-[175px] hidden sm:flex-grow sm:block">
             <h3 className="font-medium">Familiar</h3>
             <ul className="list-disc list-inside text-muted-foreground">
               <li>GraphQL</li>
