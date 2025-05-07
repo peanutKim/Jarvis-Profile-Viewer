@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className="bg-background border-t py-6 px-6">
       <div className="max-w-screen-xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
         <div className="flex items-center gap-2">
-          <span className="font-semibold text-base text-foreground">jrvs</span>
+          <span className=" text-base ">jrvs</span>
         </div>
 
         <p className="text-center">
