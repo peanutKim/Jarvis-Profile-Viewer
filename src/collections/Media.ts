@@ -6,7 +6,6 @@ export const Media: CollectionConfig = {
     read: () => true,
   },
   upload: {
-    staticDir: 'public/media',
     imageSizes: [
       {
         name: 'thumbnail',
