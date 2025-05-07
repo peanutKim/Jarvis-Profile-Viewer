@@ -9,8 +9,8 @@ import { ThemeProvider } from 'next-themes'
 const robo = Roboto({ subsets: ['latin'] })
 
 export const metadata = {
-  description: 'A blank template using Payload in a Next.js app.',
-  title: 'Payload Blank Template',
+  description: 'At Jarvis, we solve the toughest challenges in data, AI, and technology by leveraging proven technologies to empower organizations to innovate and drive business success. Our team of expert advisors and technologists delivers forward-thinking solutions.',
+  title: 'Mock Jarvis Consulting Group | Innovate. Empower. Impact',
 }
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
