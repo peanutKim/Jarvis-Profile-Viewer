@@ -29,12 +29,12 @@ const Page = () => {
       }
 
       if (searchParams.get("firstName") != null) {
-        let firstName = String(searchParams.get("firstName")).toUpperCase();
+        const firstName = String(searchParams.get("firstName")).toUpperCase();
         data.docs = data.docs.filter((item: { firstName: string }) => item.firstName.toUpperCase().includes(firstName));
       }
 
       if (searchParams.get("lastName") != null) {
-        let lastName = String(searchParams.get("lastName")).toUpperCase();
+        const lastName = String(searchParams.get("lastName")).toUpperCase();
         data.docs = data.docs.filter((item: { lastName: string }) => item.lastName.toUpperCase().includes(lastName));
       }
 
@@ -43,7 +43,7 @@ const Page = () => {
       }
 
       if (searchParams.get("bio") != null) {
-        let bio = String(searchParams.get("bio")).toUpperCase();
+        const bio = String(searchParams.get("bio")).toUpperCase();
         data.docs = data.docs.filter((item: { bio: string }) => item.bio.toUpperCase().includes(bio));
       }
 
