@@ -5,10 +5,10 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { Consultant } from '@/payload-types'
 import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 import { Input } from '@/components/ui/input'
+import { Consultant } from '@/payload-types'
 
 const Page = () => {
   const [consultants, setConsultants] = useState<Consultant[]>([])
@@ -17,7 +17,7 @@ const Page = () => {
 
   useEffect(() => {
     const fetchConsultants = async () => {
-      const response = await fetch('/api/consultants')
+      const response = await fetch('/api/get-consultants')
       const data = await response.json()
 
       if(searchParams.toString() == "") {
@@ -69,7 +69,7 @@ const Page = () => {
       <Input type="text" id="filter" value={filter} placeholder="Search by first name" onInput={e => {setFilter(e.target.value)}}/>
       <Button type="submit" onClick={submitSearch}>Search</Button>
     </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="mb-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {consultants.map((consultant) => (
           <Card key={consultant.id} className="shadow-md">
             <CardHeader>
@@ -84,23 +84,20 @@ const Page = () => {
               <p>
                 <strong>Phone:</strong> {consultant.phoneNumber}
               </p>
-              {consultant.profilePicture && (
-                <Image
-                  src={
-                    consultant.profilePicture &&
-                    (typeof consultant.profilePicture === 'string'
-                      ? consultant.profilePicture
-                      : consultant.profilePicture.url || '/default-image.jpg')
-                  }
-                  alt={`${consultant.firstName} ${consultant.lastName}`}
-                  width={500} // Default width
-                  height={500} // Default height
-                  className="w-full h-auto mt-2 object-cover"
-                />
-              )}
+              <Image
+                src={
+                  typeof consultant.profilePicture === 'string'
+                    ? consultant.profilePicture
+                    : consultant.profilePicture?.url || '/default-image.jpg'
+                }
+                alt={`${consultant.firstName} ${consultant.lastName}`}
+                width={500}
+                height={500}
+                className="w-full h-auto mt-2 object-cover"
+              />
             </CardContent>
             <CardFooter className="flex justify-end">
-              <Link href={`/profile?id=${consultant.id}`} passHref>
+              <Link href={`/profile/${consultant.id}`} passHref>
                 <Button variant="outline">View Profile</Button>
               </Link>
             </CardFooter>
