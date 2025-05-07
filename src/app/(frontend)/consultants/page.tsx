@@ -1,7 +1,7 @@
 'use client'
 
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { Button, buttonVariants } from '@/components/ui/button'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
