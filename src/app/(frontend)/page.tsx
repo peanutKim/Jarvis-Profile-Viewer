@@ -18,8 +18,8 @@ export default async function HomePage() {
             Our unique talent model offers a scalable solution for building a successful talent pipeline, including full-time conversion at no-cost.
           </p>
           <div className="mt-6 flex flex-col gap-4 sm:flex-row">
-            <Link href="/consultants" className={buttonVariants()}>
-              Check Out Our Talent
+            <Link href="/consultants" className={`${buttonVariants()} bg-red-600 hover:bg-red-700`}>
+              Discover Top Talent
             </Link>
             <Link href="/admin">
               <Button variant="ghost">Admin &rarr;</Button>
