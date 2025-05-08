@@ -1,6 +1,4 @@
-# Payload Blank Template
-
-This template comes configured with the bare minimum to get started on anything you need.
+# Demo Jarvis Profile Viewer
 
 ## Quick start
 
@@ -18,7 +16,6 @@ After you click the `Deploy` button above, you'll want to have standalone copy o
 
 1. First [clone the repo](#clone) if you have not done so already
 2. `cd my-project && cp .env.example .env` to copy the example environment variables. You'll need to add the `MONGODB_URI` from your Cloud project to your `.env` if you want to use S3 storage and the MongoDB database that was created for you.
-
 3. `pnpm install && pnpm dev` to install dependencies and start the dev server
 4. open `http://localhost:3000` to open the app in your browser
 
@@ -61,7 +58,3 @@ Alternatively, you can use [Docker](https://www.docker.com) to spin up this temp
 1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
 
 That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
-
-## Questions
-
-If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
